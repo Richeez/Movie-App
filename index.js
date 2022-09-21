@@ -7,18 +7,18 @@ const IMG_PATH= 'https://image.tmdb.org/t/p/w1280'
 const mainContainer = document.querySelector(".mainContainer");
 const movieContainer = document.querySelector(".movieContainer");
 
-const header = document.querySelector(".header");
+const notice = document.querySelector(".notice");
 
 const input = document.querySelector("input");
 
 
-const timeOut = 5000
+const timeOut = 25000
 input.addEventListener('click', () => {
-  header.classList.add('reveal');
+  notice.classList.add('reveal');
   input.classList.add('additional-margin');
 
   setTimeout(() => {
-    header.classList.remove('reveal');
+    notice.classList.remove('reveal');
   input.classList.remove('additional-margin');
 
   }, timeOut);
@@ -33,9 +33,7 @@ const getMovies = async () => {
         const response = await fetch(API_URL);
 
         respData = await response.json();
-        
-        console.log(respData);
-        
+                
         respData.results.forEach(movie => {
 
             let movieContainer = document.createElement("div")
@@ -71,8 +69,8 @@ const getMovies = async () => {
              const toTOP = document.createElement("div") 
                toTOP.classList.add("triangle-wrapper");
           toTOP.innerHTML = `<div class="triangle">
-        <p><a href="#"> &nbsp;To <br> &nbsp;Top</a></p>
-     </div>`;
+          <a href="#"><i class="fa fa-arrow-up"></i></a>
+          </div>`;
 
           const Dev_Contact_Cont = document.createElement('div');
           Dev_Contact_Cont.classList.add('Dev-contact-cont');
@@ -97,7 +95,7 @@ const getMovies = async () => {
         
         
     } catch (error) {
-        console.error("sorry something went wrong");
+        console.error(error,"sorry something went wrong");
     }
     
     
@@ -173,8 +171,8 @@ function HL() {
                const toTOP = document.createElement("div") 
                toTOP.classList.add("triangle-wrapper");
                toTOP.innerHTML=`<div class="triangle">
-        <p><a href="#"> &nbsp;To <br> &nbsp;Top</a></p>
-     </div>`
+               <a href="#"><i class="fa fa-arrow-up"></i></a>
+               </div>`
       
         // console.log(movieContainer);
         movieContainer.appendChild(filmWrapper);
@@ -237,8 +235,8 @@ function LH() {
        const toTOP = document.createElement("div") 
                toTOP.classList.add("triangle-wrapper");
       toTOP.innerHTML = `<div class="triangle">
-        <p><a href="#"> &nbsp;To <br> &nbsp;Top</a></p>
-     </div>`;
+      <a href="#"><i class="fa fa-arrow-up"></i></a>
+      </div>`;
         // console.log(movieContainer);
      movieContainer.appendChild(filmWrapper);
         filmWrapper.appendChild(overView);
